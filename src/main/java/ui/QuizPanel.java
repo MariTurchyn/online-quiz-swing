@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.function.BiConsumer;
 
-/**
- * Quiz screen (stub version).
- * For now, just a placeholder with a "Finish" button.
- */
+
 public class QuizPanel extends JPanel {
     private final BiConsumer<Integer, Integer> onFinish; // callback: (score, totalQuestions)
 
