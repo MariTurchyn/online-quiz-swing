@@ -21,7 +21,8 @@ public class ResultPanel extends JPanel {
         add(resultLabel, BorderLayout.CENTER);
 
         // Back button at the bottom
-        JButton back = new JButton("Back to Login");
+// in ui/ResultPanel.java
+        JButton back = new JButton("Back to Categories");
         back.addActionListener(e -> onBack.run());
         add(back, BorderLayout.SOUTH);
     }
