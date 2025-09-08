@@ -1,13 +1,11 @@
 package ui;
 
 import model.Question;
-import service.QuizService;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.util.function.BiConsumer;
-
 
 public class QuizPanel extends JPanel {
     private final BiConsumer<Integer, Integer> onFinish; // callback: (score, total)
@@ -22,12 +20,9 @@ public class QuizPanel extends JPanel {
     private final ButtonGroup group = new ButtonGroup();
     private final JButton nextButton = new JButton("Next");
 
-    public QuizPanel(BiConsumer<Integer, Integer> onFinish) {
+    public QuizPanel(List<Question> questions, BiConsumer<Integer, Integer> onFinish) {
+        this.questions = questions;
         this.onFinish = onFinish;
-
-        // Get questions from service
-        QuizService service = new QuizService();
-        this.questions = service.getQuestions();
 
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -54,21 +49,24 @@ public class QuizPanel extends JPanel {
     }
 
     private void loadQuestion() {
+        if (currentIndex < 0 || currentIndex >= questions.size()) {
+            // Safety: if somehow out of range, finish
+            onFinish.accept(score, questions.size());
+            return;
+        }
+
         Question q = questions.get(currentIndex);
         questionLabel.setText(q.getText());
 
-        for (int i = 0; i < optionButtons.length; i++) {
+        // Assume exactly 4 options as per your data
+        for (int i = 0; i < 4; i++) {
             optionButtons[i].setText(q.getOptions().get(i));
         }
 
         group.clearSelection();
 
         // Last question? change button text
-        if (currentIndex == questions.size() - 1) {
-            nextButton.setText("Finish");
-        } else {
-            nextButton.setText("Next");
-        }
+        nextButton.setText(currentIndex == questions.size() - 1 ? "Finish" : "Next");
     }
 
     private void onNext() {
@@ -95,7 +93,7 @@ public class QuizPanel extends JPanel {
         if (currentIndex < questions.size()) {
             loadQuestion();
         } else {
-            // Quiz finished → tell AppFrame
+            // Quiz finished → tell parent
             onFinish.accept(score, questions.size());
         }
     }
