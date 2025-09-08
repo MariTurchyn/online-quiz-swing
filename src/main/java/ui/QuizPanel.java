@@ -25,6 +25,8 @@ public class QuizPanel extends JPanel {
         this.onFinish = onFinish;
 
         setLayout(new BorderLayout(10, 10));
+        setOpaque(false); // <—
+
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Question at the top
@@ -33,6 +35,8 @@ public class QuizPanel extends JPanel {
 
         // Options in the middle
         JPanel optionsPanel = new JPanel(new GridLayout(4, 1, 6, 6));
+        optionsPanel.setOpaque(false); // <—
+
         for (int i = 0; i < optionButtons.length; i++) {
             optionButtons[i] = new JRadioButton();
             group.add(optionButtons[i]);
