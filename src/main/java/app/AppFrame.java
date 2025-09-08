@@ -7,6 +7,7 @@ import ui.CategoryPanel;
 import ui.LoginPanel;
 import ui.QuizPanel;
 import ui.ResultPanel;
+import ui.BackgroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +32,11 @@ public class AppFrame extends JFrame {
         setSize(520, 640);
         setLocationRelativeTo(null);
 
-        // Native OS look
-        try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch (Exception ignored) {}
+        BackgroundPanel bg = new BackgroundPanel("/bg.jpg");
+        setContentPane(bg);
+
+        root.setOpaque(false);
+        bg.add(root);
 
         // Screens + callbacks
         var login    = new LoginPanel(this::onStartWithName);
@@ -42,7 +46,7 @@ public class AppFrame extends JFrame {
         root.add(login,    CARD_LOGIN);
         root.add(category, CARD_CATEGORY);
         root.add(result,   CARD_RESULT);
-        setContentPane(root);
+
 
         showLogin();
     }
