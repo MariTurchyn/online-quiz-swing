@@ -14,6 +14,8 @@ public class ResultPanel extends JPanel {
         this.onBack = onBack;
 
         setLayout(new BorderLayout());
+        setOpaque(false); // <—
+
 
         // Score display in the center
         resultLabel.setFont(resultLabel.getFont().deriveFont(Font.BOLD, 20f));
