@@ -69,8 +69,13 @@ public class AppFrame extends JFrame {
         quizPanel = new QuizPanel(questions, this::onQuizFinished);
         root.add(quizPanel, CARD_QUIZ);
 
+        // refresh layout (optional polish)
+        root.revalidate();
+        root.repaint();
+
         showQuiz();
     }
+
 
     // from QuizPanel
     private void onQuizFinished(int score, int total) {
