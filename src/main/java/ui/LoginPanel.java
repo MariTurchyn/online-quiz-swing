@@ -14,6 +14,8 @@ public class LoginPanel extends JPanel {
         this.onStart = onStart;
 
         setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
+        setOpaque(false); //
 
         // Title label at the top
         JLabel title = new JLabel("Welcome to the Quiz", SwingConstants.CENTER);
@@ -23,6 +25,7 @@ public class LoginPanel extends JPanel {
 
         // Input form: name field + button
         JPanel form = new JPanel(new GridLayout(3, 1, 8, 8));
+        form.setOpaque(false);
         form.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
         JLabel nameLabel = new JLabel("Enter your name:");

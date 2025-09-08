@@ -14,6 +14,8 @@ public class CategoryPanel extends JPanel {
         this.onPick = onPick;
 
         setLayout(new BorderLayout(10, 10));
+        setOpaque(false); // <—
+
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JLabel title = new JLabel("Choose a Category", SwingConstants.CENTER);
@@ -21,6 +23,8 @@ public class CategoryPanel extends JPanel {
         add(title, BorderLayout.NORTH);
 
         JPanel grid = new JPanel(new GridLayout(0, 1, 10, 10));
+        grid.setOpaque(false);      // <—
+
         for (Category c : Category.values()) {
             JButton b = new JButton(c.displayName());
             b.addActionListener(e -> onPick.accept(c));
