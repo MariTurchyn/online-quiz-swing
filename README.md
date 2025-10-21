@@ -1,74 +1,118 @@
-**Online Quiz (Java + Swing)**
+# 🧠 Online Quiz (Java + Swing)
 
-A clean, desktop quiz app built with Java 17/18, Swing, and the FlatLaf modern look & feel.
-Users enter their name → pick a category → answer 7 multiple-choice questions → see results.
-Designed to be readable, themeable, and easy to extend.
+A **Java Swing desktop quiz application** designed to deliver a fun, interactive learning experience.
+Built with &**Java 17/18, Swing, and FlatLaf**, it showcases elegant UI design, modular architecture, and clear user flow through multiple quiz categories.
 
+## 📘 Overview
 
-**1.Features**
+The **Online Quiz System** allows users to test their general knowledge through multiple categories.
+It provides a seamless, step-by-step experience:
 
-✨ Modern UI with FlatLaf (rounded corners, focus polish
+**Login → Choose Category → Answer 7 Questions → View Results → Retry**
 
-🖼️ Global background image (one photo across all screens)
+Each quiz category has 7 multiple-choice questions with instant scoring and feedback.
 
-🧭 Clear flow: Login → Category → Quiz → Result → Back to Categories
+## ✨ Features
 
-🧩 5 categories (Capitals, Currencies, Languages, Flags, Continents)
+- 🎨 **Modern UI** styled with FlatLaf (rounded corners, focus effects, and clean pastel look)
 
-✅ 7 questions per category, 4 answers each, instant scoring
+- 🖼️ **Global** background image shared across all panels
 
-♻️ Quiz panel recreated per category (no stale state)
+- 🧭 **Smooth navigation flow** between login, quiz, and results screens
 
-🧪 JUnit 5 ready
+- 🧩 **Five categories**: Capitals, Currencies, Languages, Flags, and Continents
 
+- ✅ **7 questions per quiz**, each with 4 answer options
 
+- ♻️ **Dynamic panel recreation** for each quiz attempt (no stale data)
 
-**2.Tech Stack**
+- 🧪 **JUnit 5 testing support** for validating quiz logic and results
 
-**Java 17/18, Swing**
+## 🧠 Architecture
 
-**FlatLaf** for theming
+The system is built with **modular design** and **CardLayout navigation**, ensuring easy extension and maintenance.
 
-**Maven** (build + exec plugin)
+## 🧩 Core Components
+```bash 
+| Component           | Description                                         |
+| ------------------- | --------------------------------------------------- |
+| **AppFrame**        | Main window that manages all screens via CardLayout |
+| **BackgroundPanel** | Holds the shared background image for all panels    |
+| **LoginPanel**      | Collects player’s name before starting the quiz     |
+| **CategoryPanel**   | Displays all quiz categories for selection          |
+| **QuizPanel**       | Handles questions, user answers, and scoring        |
+| **ResultPanel**     | Displays the final result and options to retry      |
+| **QuizService**     | Supplies randomized questions per category          |
+```
+## 🛠️ Tech Stack
+``` bash
+| Category         | Tools & Libraries                            |
+| ---------------- | -------------------------------------------- |
+| **Language**     | Java 17 / 18                                 |
+| **UI Framework** | Swing + FlatLaf                              |
+| **Build Tool**   | Maven                                        |
+| **Testing**      | JUnit 5                                      |
+| **Architecture** | CardLayout + Service-Oriented Modular Design |
+```
 
-**JUnit 5** (tests)
+## 🚀 How to Run
+### 🧩 Prerequisites
 
+- JDK 17 or newer (built with Java 18)
 
+- Maven 3.8 or later
 
-**3.Quick Start**
+### ▶️ Run from IntelliJ IDEA
 
-**Prerequisites**
+1.Open the project in IntelliJ
 
-JDK 17+ (project uses release 18)
+2.Run the class:
 
-Maven 3.8+
+```bash
+app.Main
 
-**Run**
+```
+### ▶️ Run from Terminal
 
-From IntelliJ
-
-Open the project → run Main.
-
-**From terminal**
+```bash
 mvn -q exec:java -Dexec.mainClass=app.Main
 
-The repo already includes exec-maven-plugin so you don’t have to wire classpaths manually.
+```
 
-**4. Project Structure**
+## 📂 Project Structure
+``` bash
+src/main/java/
+ ├─ app/
+ │   ├─ Main.java              # Entry point
+ │   ├─ AppFrame.java          # Main JFrame (CardLayout manager)
+ │   ├─ BackgroundPanel.java   # Background layer shared across UI
+ │   ├─ LoginPanel.java        # User login
+ │   ├─ CategoryPanel.java     # Category selection screen
+ │   ├─ QuizPanel.java         # Quiz logic and question flow
+ │   └─ ResultPanel.java       # Displays final score and retry option
+ ├─ model/
+ │   └─ Question.java          # Represents quiz question data
+ ├─ service/
+ │   └─ QuizService.java       # Provides questions per category
+src/main/resources/
+ └─ background.jpg             # Shared background image
 
-<img width="623" height="405" alt="image" src="https://github.com/user-attachments/assets/9146848c-7265-4cbd-a598-c115b41c26f6" />
-
-**5. How It Works (Quick Architecture)**
-
-**AppFrame** hosts a **CardLayout** with 4 screens: login, category, quiz, result.
-
-**BackgroundPanel** is the **content pane**; all screens are non-opaque so the photo shows through.
-
-**QuizService#getQuestions(Category)** returns a List<Question> with exactly 7 questions per category.
-
-**QuizPanel** receives the questions, tracks progress/score, and calls onFinish(score, total).
-
-**ResultPanel** displays the final score and routes back to the category picker.
-
+```
+## 🖼️ Screenshots
+### 🧭 Category Selection
 <img width="1011" height="603" alt="image" src="https://github.com/user-attachments/assets/d92c9276-8f34-498b-95ac-cbe0ebb97e63" />
+### 🧩 Quiz in Progress
 <img width="987" height="607" alt="image" src="https://github.com/user-attachments/assets/d1837857-8c44-48c1-8af2-3ea06c335cda" />
+
+## 🧾 Key Highlights
+
+- ✅ FlatLaf modern look & feel
+- ✅ Seamless multi-screen flow using CardLayout
+- ✅ Clean modular MVC structure
+- ✅ Instant scoring and quiz feedback
+- ✅ Ready for JUnit 5 testing
+- ✅ Lightweight, academic-grade Java project
+
+## ⚙️ Technologies
+
+**Java · Swing · FlatLaf · JUnit 5 · Maven (academic)**
